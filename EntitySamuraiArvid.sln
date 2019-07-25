@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MySamurai.Data", "MySamurai
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MySamurai.Domain", "MySamurai.Domain\MySamurai.Domain.csproj", "{A062AA89-EEFB-4EE7-B114-966C7ABDF0CC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MySamurai.App", "MySamurai.App\MySamurai.App.csproj", "{1F61A2C3-FF3E-4046-A83A-A246B33D2442}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{A062AA89-EEFB-4EE7-B114-966C7ABDF0CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A062AA89-EEFB-4EE7-B114-966C7ABDF0CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A062AA89-EEFB-4EE7-B114-966C7ABDF0CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F61A2C3-FF3E-4046-A83A-A246B33D2442}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F61A2C3-FF3E-4046-A83A-A246B33D2442}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F61A2C3-FF3E-4046-A83A-A246B33D2442}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F61A2C3-FF3E-4046-A83A-A246B33D2442}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
