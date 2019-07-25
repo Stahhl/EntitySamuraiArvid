@@ -9,8 +9,8 @@ using MySamurai.Data.Models;
 namespace MySamurai.Data.Migrations
 {
     [DbContext(typeof(SamuraiContext))]
-    [Migration("20190725083728_AddedNameProp")]
-    partial class AddedNameProp
+    [Migration("20190725085321_added_quote")]
+    partial class added_quote
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -19,6 +19,25 @@ namespace MySamurai.Data.Migrations
                 .HasAnnotation("ProductVersion", "2.2.6-servicing-10079")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("MySamurai.Domain.ClassLibrary.Quote", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("SamuraiId");
+
+                    b.Property<int?>("Style");
+
+                    b.Property<string>("Text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("SamuraiId");
+
+                    b.ToTable("Quote");
+                });
 
             modelBuilder.Entity("MySamurai.Domain.ClassLibrary.Samurai", b =>
                 {
@@ -31,6 +50,14 @@ namespace MySamurai.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Samurais");
+                });
+
+            modelBuilder.Entity("MySamurai.Domain.ClassLibrary.Quote", b =>
+                {
+                    b.HasOne("MySamurai.Domain.ClassLibrary.Samurai", "Samurai")
+                        .WithMany("Quotes")
+                        .HasForeignKey("SamuraiId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

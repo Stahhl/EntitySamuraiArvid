@@ -18,6 +18,25 @@ namespace MySamurai.Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("MySamurai.Domain.ClassLibrary.Quote", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("SamuraiId");
+
+                    b.Property<int?>("Style");
+
+                    b.Property<string>("Text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("SamuraiId");
+
+                    b.ToTable("Quote");
+                });
+
             modelBuilder.Entity("MySamurai.Domain.ClassLibrary.Samurai", b =>
                 {
                     b.Property<int>("Id")
@@ -29,6 +48,14 @@ namespace MySamurai.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Samurais");
+                });
+
+            modelBuilder.Entity("MySamurai.Domain.ClassLibrary.Quote", b =>
+                {
+                    b.HasOne("MySamurai.Domain.ClassLibrary.Samurai", "Samurai")
+                        .WithMany("Quotes")
+                        .HasForeignKey("SamuraiId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }
