@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace MySamurai.Data.Migrations
 {
-    public partial class test : Migration
+    public partial class restart01 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -31,7 +31,8 @@ namespace MySamurai.Data.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(nullable: true)
+                    Name = table.Column<string>(nullable: true),
+                    HairStyle = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -83,12 +84,14 @@ namespace MySamurai.Data.Migrations
                 name: "SamuraiBattles",
                 columns: table => new
                 {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     SamuraiId = table.Column<int>(nullable: false),
                     BattleId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_SamuraiBattles", x => new { x.BattleId, x.SamuraiId });
+                    table.PrimaryKey("PK_SamuraiBattles", x => x.Id);
                     table.ForeignKey(
                         name: "FK_SamuraiBattles_Battles_BattleId",
                         column: x => x.BattleId,
@@ -160,6 +163,11 @@ namespace MySamurai.Data.Migrations
                 name: "IX_Quotes_SamuraiId",
                 table: "Quotes",
                 column: "SamuraiId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_SamuraiBattles_BattleId",
+                table: "SamuraiBattles",
+                column: "BattleId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_SamuraiBattles_SamuraiId",

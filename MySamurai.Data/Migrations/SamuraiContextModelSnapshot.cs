@@ -104,6 +104,8 @@ namespace MySamurai.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int?>("HairStyle");
+
                     b.Property<string>("Name");
 
                     b.HasKey("Id");
@@ -113,11 +115,17 @@ namespace MySamurai.Data.Migrations
 
             modelBuilder.Entity("MySamurai.Domain.ClassLibrary.SamuraiBattle", b =>
                 {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
                     b.Property<int>("BattleId");
 
                     b.Property<int>("SamuraiId");
 
-                    b.HasKey("BattleId", "SamuraiId");
+                    b.HasKey("Id");
+
+                    b.HasIndex("BattleId");
 
                     b.HasIndex("SamuraiId");
 
@@ -174,7 +182,7 @@ namespace MySamurai.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("MySamurai.Domain.ClassLibrary.Samurai", "Samurai")
-                        .WithMany()
+                        .WithMany("SamuraiBattles")
                         .HasForeignKey("SamuraiId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });

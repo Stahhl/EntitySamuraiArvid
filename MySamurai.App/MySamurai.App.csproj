@@ -6,8 +6,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.2.6" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\MySamurai.Data\MySamurai.Data.csproj" />
     <ProjectReference Include="..\MySamurai.Domain\MySamurai.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="SQL\" />
   </ItemGroup>
 
 </Project>
